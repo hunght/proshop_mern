@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "commonjs",
+    "outDir": "./lib",
+    "rootDir": "./backend",
+    "strict": true,
+    "esModuleInterop": true
+  },
+  "exclude": [
+    "test"
+  ]
+}
