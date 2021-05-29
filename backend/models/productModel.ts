@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
+import { IProduct } from '../type/model/product';
 
-const reviewSchema = new mongoose.Schema(
+const reviewSchema = new mongoose.Schema<IProduct>(
     {
         name: { type: String, required: true },
         rating: { type: Number, required: true },

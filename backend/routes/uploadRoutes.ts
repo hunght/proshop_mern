@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
     },
 });
 
-function checkFileType(file, cb) {
+function checkFileType(file: Express.Multer.File, cb: multer.FileFilterCallback) {
     const filetypes = /jpg|jpeg|png/;
     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
     const mimetype = filetypes.test(file.mimetype);
@@ -20,7 +20,7 @@ function checkFileType(file, cb) {
     if (extname && mimetype) {
         return cb(null, true);
     } else {
-        cb('Images only!');
+        cb(Error('Images only!'));
     }
 }
 

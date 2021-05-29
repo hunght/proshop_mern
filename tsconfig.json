@@ -1,13 +1,19 @@
 {
-  "compilerOptions": {
-    "target": "es2018",
-    "module": "commonjs",
-    "outDir": "./lib",
-    "rootDir": "./backend",
-    "strict": true,
-    "esModuleInterop": true
-  },
-  "exclude": [
-    "test"
-  ]
+	"compilerOptions": {
+		"target": "es2018",
+		"module": "commonjs",
+		"sourceMap": true,
+		"outDir": "production-server",
+		"noUnusedLocals": true,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"noEmit": false,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"strict": true
+	},
+	"include": [
+		"global.d.ts",
+		"backend"
+	]
 }
