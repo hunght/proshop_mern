@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-import User from '../models/userModel.js';
+import User from '../models/userModel';
 import { Handler } from 'express';
 import _ from 'lodash';
 const protect: Handler = async (req, res, next) => {

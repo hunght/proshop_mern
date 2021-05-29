@@ -1,7 +1,7 @@
 import { Handler } from 'express';
-import Product from '../models/productModel.js';
-import Review from '../models/reviewModel.js';
-import { IReview } from '../type/model/product.js';
+import Product from '../models/productModel';
+import Review from '../models/reviewModel';
+import { IReview } from '../type/model/product';
 
 // @desc    Fetch all products
 // @route   GET /api/products

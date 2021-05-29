@@ -1,10 +1,10 @@
 import dotenv from 'dotenv';
-import users from './data/users.js';
-import products from './data/products.js';
-import User from './models/userModel.js';
-import Product from './models/productModel.js';
-import Order from './models/orderModel.js';
-import connectDB from './config/db.js';
+import users from './data/users';
+import products from './data/products';
+import User from './models/userModel';
+import Product from './models/productModel';
+import Order from './models/orderModel';
+import connectDB from './config/db';
 
 dotenv.config();
 
@@ -26,10 +26,10 @@ const importData = async () => {
 
         await Product.insertMany(sampleProducts);
 
-        console.log('Data Imported!'.green.inverse);
+        console.log('Data Imported!');
         process.exit();
     } catch (error) {
-        console.error(`${error}`.red.inverse);
+        console.error(`${error}`);
         process.exit(1);
     }
 };
@@ -40,10 +40,10 @@ const destroyData = async () => {
         await Product.deleteMany();
         await User.deleteMany();
 
-        console.log('Data Destroyed!'.red.inverse);
+        console.log('Data Destroyed!');
         process.exit();
     } catch (error) {
-        console.error(`${error}`.red.inverse);
+        console.error(`${error}`);
         process.exit(1);
     }
 };

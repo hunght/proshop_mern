@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build": "yarn run compile && node lib/",
-    "server": "ts-node-dev --no-notify ./backend/",
+    "server": "nodemon --exec ts-node --files ./backend",
     "lint": "eslint backend/. --ext .ts --fix",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
@@ -36,7 +36,7 @@
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
     "concurrently": "^5.3.0",
-    "eslint": "^7.27.0",
+   "eslint": "6.6.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "nodemon": "^2.0.4",

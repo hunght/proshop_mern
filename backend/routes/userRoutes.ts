@@ -10,8 +10,8 @@ import {
     deleteUser,
     getUserById,
     updateUser,
-} from '../controllers/userController.js';
-import { protect, admin } from '../middleware/authMiddleware.js';
+} from '../controllers/userController';
+import { protect, admin } from '../middleware/authMiddleware';
 
 router.route('/').post(registerUser).get(asyncHandler(protect), admin, asyncHandler(getUsers));
 router.post('/login', asyncHandler(asyncHandler(authUser)));

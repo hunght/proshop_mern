@@ -3,7 +3,7 @@ declare global {
         interface ProcessEnv {
             JWT_SECRET: string;
             NODE_ENV: 'development' | 'production';
-            PORT?: string;
+            PORT: string;
             MONGO_URI: string;
         }
     }

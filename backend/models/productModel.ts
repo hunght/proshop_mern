@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { IProduct, IReview } from '../type/model/product';
+import { IProduct } from '../type/model/product';
 import { reviewSchema } from './reviewModel';
 
 const productSchema = new mongoose.Schema(

@@ -1,8 +1,8 @@
-import generateToken from '../utils/generateToken.js';
-import User from '../models/userModel.js';
+import generateToken from '../utils/generateToken';
+import User from '../models/userModel';
 import { Handler } from 'express';
 
-import { CreateLinkReq } from './types.js';
+import { CreateLinkReq } from './types';
 // @desc    Auth user & get token
 // @route   POST /api/users/login
 // @access  Public
