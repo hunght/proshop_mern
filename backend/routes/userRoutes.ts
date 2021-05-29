@@ -13,13 +13,16 @@ import {
 } from '../controllers/userController.js';
 import { protect, admin } from '../middleware/authMiddleware.js';
 
-router.route('/').post(registerUser).get(protect, admin, getUsers);
-router.post('/login', asyncHandler(authUser));
-router.route('/profile').get(protect, getUserProfile).put(protect, updateUserProfile);
+router.route('/').post(registerUser).get(asyncHandler(protect), admin, asyncHandler(getUsers));
+router.post('/login', asyncHandler(asyncHandler(authUser)));
+router
+    .route('/profile')
+    .get(asyncHandler(protect), asyncHandler(getUserProfile))
+    .put(asyncHandler(protect), asyncHandler(updateUserProfile));
 router
     .route('/:id')
-    .delete(protect, admin, deleteUser)
-    .get(protect, admin, getUserById)
-    .put(protect, admin, updateUser);
+    .delete(asyncHandler(protect), admin, asyncHandler(deleteUser))
+    .get(asyncHandler(protect), admin, asyncHandler(getUserById))
+    .put(asyncHandler(protect), admin, asyncHandler(updateUser));
 
 export default router;

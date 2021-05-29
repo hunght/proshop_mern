@@ -5,4 +5,5 @@ export interface IUser extends Document {
     name: string;
     password: string;
     isAdmin: boolean;
+    matchPassword: (pw: string) => Promise<boolean>;
 }

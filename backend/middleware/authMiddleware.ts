@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 
 import User from '../models/userModel.js';
 import { Handler } from 'express';
-
+import _ from 'lodash';
 const protect: Handler = async (req, res, next) => {
     let token;
 
@@ -12,8 +12,16 @@ const protect: Handler = async (req, res, next) => {
 
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-            req.user = await User.findById(decoded.id).select('-password');
-
+            const user = await User.findById(_.get(decoded, ['id'])).select('-password');
+            if (user) {
+                req.user = {
+                    _id: user._id,
+                    email: user.email,
+                    name: user.name,
+                    password: user.password,
+                    isAdmin: user.isAdmin,
+                };
+            }
             next();
         } catch (error) {
             console.error(error);

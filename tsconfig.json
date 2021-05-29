@@ -12,8 +12,5 @@
 		"experimentalDecorators": true,
 		"strict": true
 	},
-	"include": [
-		"global.d.ts",
-		"backend"
-	]
+ 
 }

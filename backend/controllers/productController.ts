@@ -1,5 +1,7 @@
 import { Handler } from 'express';
 import Product from '../models/productModel.js';
+import Review from '../models/reviewModel.js';
+import { IReview } from '../type/model/product.js';
 
 // @desc    Fetch all products
 // @route   GET /api/products
@@ -11,14 +13,14 @@ const getProducts: Handler = async (req, res) => {
     const keyword = req.query.keyword
         ? {
               name: {
-                  $regex: req.query.keyword,
+                  $regex: req.query.keyword.toString(),
                   $options: 'i',
               },
           }
         : {};
 
-    const count = await Product.countDocuments({ ...keyword });
-    const products = await Product.find({ ...keyword })
+    const count = await Product.countDocuments(keyword);
+    const products = await Product.find(keyword)
         .limit(pageSize)
         .skip(pageSize * (page - 1));
 
@@ -116,12 +118,12 @@ const createProductReview: Handler = async (req, res) => {
             throw new Error('Product already reviewed');
         }
 
-        const review = {
+        const review: IReview = await Review.create({
             name: req.user.name,
             rating: Number(rating),
             comment,
             user: req.user._id,
-        };
+        });
 
         product.reviews.push(review);
 
