@@ -1,5 +1,7 @@
 import express from 'express';
+import asyncHandler from 'express-async-handler';
 const router = express.Router();
+
 import {
     getProducts,
     getProductById,
@@ -9,11 +11,19 @@ import {
     createProductReview,
     getTopProducts,
 } from '../controllers/productController';
+
 import { protect, admin } from '../middleware/authMiddleware';
 
-router.route('/').get(getProducts).post(protect, admin, createProduct);
-router.route('/:id/reviews').post(protect, createProductReview);
-router.get('/top', getTopProducts);
-router.route('/:id').get(getProductById).delete(protect, admin, deleteProduct).put(protect, admin, updateProduct);
+router.route('/').get(asyncHandler(getProducts)).post(asyncHandler(protect), admin, asyncHandler(createProduct));
+
+router.route('/:id/reviews').post(asyncHandler(protect), asyncHandler(createProductReview));
+
+router.get('/top', asyncHandler(getTopProducts));
+
+router
+    .route('/:id')
+    .get(asyncHandler(getProductById))
+    .delete(asyncHandler(protect), admin, asyncHandler(deleteProduct))
+    .put(asyncHandler(protect), admin, asyncHandler(updateProduct));
 
 export default router;

@@ -1,6 +1,6 @@
 import { Request } from 'express';
 import { IUser } from '../type/model/user';
 
-export interface CreateLinkReq extends Request {
+export interface ICreateUserRequest extends Request {
     body: Partial<IUser>;
 }

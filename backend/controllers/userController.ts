@@ -2,7 +2,7 @@ import generateToken from '../utils/generateToken';
 import User from '../models/userModel';
 import { Handler } from 'express';
 
-import { CreateLinkReq } from './types';
+import { ICreateUserRequest } from './type';
 // @desc    Auth user & get token
 // @route   POST /api/users/login
 // @access  Public
@@ -145,7 +145,7 @@ const getUserById: Handler = async (req, res) => {
 // @desc    Update user
 // @route   PUT /api/users/:id
 // @access  Private/Admin
-const updateUser: Handler = async (req: CreateLinkReq, res) => {
+const updateUser: Handler = async (req: ICreateUserRequest, res) => {
     const user = await User.findById(req.params.id);
 
     if (user) {
